@@ -1,4 +1,4 @@
-# (C) @DamienSoukara 
+# (C) @Dlaize 
 
 import os
 import time
@@ -34,7 +34,7 @@ def main():
     with Alty:
         while True:
             print("💬 [INFO] Starting To Check Uptime..")
-            TEXT = f"<b>👾 @{UPDATE_CHANNEL} Our Bot's Status (Updating Every  {round(TIME / 60)} Hours)</b>\n\n<b>📜 BOTS :</b>\n\n"
+            TEXT = f"<b>🤖 @{UPDATE_CHANNEL} Our Bot's Status (Updating Every {round(TIME / 60)} Hours)</b>\n\n<b>📜 BOTS LIST :</b>\n\n"
 
             for bot in BOTS:
                 print(f"💬 [INFO] Checking @{bot}")
@@ -52,10 +52,10 @@ def main():
                     TEXT += f"✅ - @{bot}\n"
                 Alty.read_history(bot)
 
-            utc_now = datetime.datetime.now(pytz.timezone('UTC')).strftime("%I:%M %p %d/%m/%y")
-            ma_now = datetime.datetime.now(pytz.timezone('Africa/Casablanca')).strftime("%d/%m/%y %I:%M:%S %p")
+            utc_now = datetime.datetime.now(pytz.timezone('IST')).strftime("%I:%M %p %d/%m/%y")
+            ma_now = datetime.datetime.now(pytz.timezone('Asia/Kolkata')).strftime("%d/%m/%y %I:%M:%S %p")
 
-            TEXT += f"\n⏱ <b>LAST UPDATE :</b>\n\n🌎 UTC : {str(utc_now)}\n🇲🇦 MA : {str(ma_now)}"
+            TEXT += f"\n⏱ <b>LAST UPDATE :</b>\n\n**🌎 IST** : {str(utc_now)}\n**🇮🇳 IN **: {str(ma_now)}"
 
             Alty.edit_message_text(UPDATE_CHANNEL, STATUS_MESSAGE_ID, text=TEXT, disable_web_page_preview=True, parse_mode="html")
             print(f"[INFO] Everything Done! Sleeping For {round(TIME / 60)} Hours...")
